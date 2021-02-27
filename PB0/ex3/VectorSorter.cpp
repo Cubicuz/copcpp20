@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void mergesort(vector<int> &from, vector<int> &to, int begin, int end)
+void VectorSorter::mergesort(vector<int> &from, vector<int> &to, int begin, int end)
 {
     if (end-begin == 1){
         to[begin] = from[begin];
@@ -58,4 +58,32 @@ void VectorSorter::isSorted(vector<int> &in, vector<int> &out){
     for (const auto& pair : expectedNumbers){
         EXPECT_EQ(pair.second, realNumbers[pair.first]);
     }
+}
+
+TEST(testVecMergeSort, alreadySorted) {
+    vector<int> input = {0, 1, 2, 3};
+    vector<int> out(input);
+    VectorSorter::mergesort(input, out);
+    VectorSorter::isSorted(input, out);
+}
+
+TEST(testVecMergeSort, inverseSorted) {
+    vector<int> input = {3, 2, 1, 0};
+    vector<int> out(input);
+    VectorSorter::mergesort(input, out);
+    VectorSorter::isSorted(input, out);
+}
+
+TEST(testVecMergeSort, rand5Sorted) {
+    vector<int> input = {4, 3, 2, 1, 0};
+    vector<int> out(input);
+    VectorSorter::mergesort(input, out);
+    VectorSorter::isSorted(input, out);
+}
+
+TEST(testVecMergeSort, rand7Sorted) {
+    vector<int> input = {6, 5, 4, 3, 2, 1, 0};
+    vector<int> out(input);
+    VectorSorter::mergesort(input, out);
+    VectorSorter::isSorted(input, out);
 }

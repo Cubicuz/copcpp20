@@ -8,7 +8,7 @@
 
 class EX3 {
 public:
-    int* mergesort(int* a, int len);
+
 };
 
 
