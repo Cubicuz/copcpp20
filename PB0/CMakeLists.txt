@@ -7,12 +7,18 @@ set(CMAKE_CXX_STANDARD 20)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 set(cpp_files
-        testthetests.h
-        testthetests.cpp
-        main.cpp
-        EX3.cpp
-        EX3.h)
+ex3/EX3.cpp
+ex3/VectorSorter.cpp
+main.cpp
+testthetests.cpp
+)
 
-add_executable(Google_Test_run ${cpp_files})
-add_executable(PB0 ${cpp_files})
+set(header_files
+ex3/EX3.h
+ex3/VectorSorter.h
+testthetests.h
+)
+
+add_executable(Google_Test_run ${header_files} ${cpp_files})
+add_executable(PB0 ${header_files} ${cpp_files})
 target_link_libraries(Google_Test_run gtest gtest_main)

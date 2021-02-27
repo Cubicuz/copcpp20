@@ -80,13 +80,12 @@ void mergesort(vector<int> &from, vector<int> &to, int begin, int end){
     }
 }
 
-vector<int>& mergesort(vector<int> &arr) {
-    vector<int> from(arr), to(arr);
+void mergesort(vector<int> &arr, vector<int> &to) {
+    vector<int> from(arr);
     mergesort(from, to, 0, from.size());
-    return to;
 }
 
-void isSorted(vector<int> input, vector<int> sorted){
+void isSorted(vector<int> &input, vector<int> &sorted){
     EXPECT_EQ(input.size(), sorted.size());
 
     for (size_t i = 0; i < input.size()-1;i++){
@@ -100,15 +99,15 @@ void isSorted(vector<int> input, vector<int> sorted){
     for (auto i : input){
         realNumbers[i]++;
     }
-    for (const auto& [key, value] : expectedNumbers){
-        EXPECT_EQ(value, realNumbers[key]);
+    for (const auto& pair : expectedNumbers){
+        EXPECT_EQ(pair.second, realNumbers[pair.first]);
     }
 }
 
 int* EX3::mergesort(int *a, int len) {
     int* out = new int(len);
     memcpy(out, a, len);
-
+    return out;
 }
 
 TEST(stuff, stuff){
@@ -153,34 +152,28 @@ TEST(testMergeSort, rand7Sorted) {
 
 TEST(testVecMergeSort, alreadySorted) {
     vector<int> input = {0, 1, 2, 3};
-    auto out = mergesort(input);
-    for (int i=0;i<input.size();i++){
-        EXPECT_EQ(i, input[i]);
-    }
+    vector<int> out(input);
+    mergesort(input, out);
+    isSorted(input, out);
 }
 
 TEST(testVecMergeSort, inverseSorted) {
-    int input [] = {3, 2, 1, 0};
-    mergesort(input, 4);
-    for (int i=0;i<4;i++){
-        EXPECT_EQ(i, input[i]);
-    }
+    vector<int> input = {3, 2, 1, 0};
+    vector<int> out(input);
+    mergesort(input, out);
+    isSorted(input, out);
 }
 
 TEST(testVecMergeSort, rand5Sorted) {
-    int input [] = {4, 3, 2, 1, 0};
-    int len = 5;
-    mergesort(input, len);
-    for (int i=0;i<len;i++){
-        EXPECT_EQ(i, input[i]);
-    }
+    vector<int> input = {4, 3, 2, 1, 0};
+    vector<int> out(input);
+    mergesort(input, out);
+    isSorted(input, out);
 }
 
 TEST(testVecMergeSort, rand7Sorted) {
-    int input [] = {6, 5, 4, 3, 2, 1, 0};
-    int len = 7;
-    mergesort(input, len);
-    for (int i=0;i<len;i++){
-        EXPECT_EQ(i, input[i]);
-    }
+    vector<int> input = {6, 5, 4, 3, 2, 1, 0};
+    vector<int> out(input);
+    mergesort(input, out);
+    isSorted(input, out);
 }
