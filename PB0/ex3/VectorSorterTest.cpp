@@ -44,3 +44,15 @@ INSTANTIATE_TEST_SUITE_P(
         vector<int>({4,82,36,34,4767,5,98,9,6,3,1,43,2,47,64,7,45,4,3,8,5,7,12,54,21,67,66,0})
     )
 );
+
+TEST(Sortingtest, testmergesortlongrandom){
+    size_t size = 1000000;
+    vector<int> in;
+    in.resize(size);
+    for (size_t i = 0; i<size; i++){
+        in[i] = rand();
+    }
+    vector<int> out(in);
+    VectorSorter::mergesort(in, out);
+    isSorted(in, out);
+}
