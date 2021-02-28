@@ -26,46 +26,21 @@ void isSorted(vector<int> &in, vector<int> &out){
     }
 }
 
-TEST_P(VectorSorterTestFixture, paramtest){
+TEST_P(VectorSorterTestFixture, testmergesort){
     vector<int> in = GetParam();
     vector<int> out(in);
     VectorSorter::mergesort(in, out);
     isSorted(in, out);
 }
-vector<int> a = {2, 3, 4, 5};
-vector<int> b = {4, 5, 6};
+
 INSTANTIATE_TEST_SUITE_P(
     SortingTest,
     VectorSorterTestFixture,
     ::testing::Values(
-        a, b, vector<int>({6, 5, 4})
+        vector<int>({0, 1, 2, 3, 4, 5, 6}),
+        vector<int>({6, 5, 4, 3, 2, 1, 0}),
+        vector<int>({1}),
+        vector<int>({4, 1}),
+        vector<int>({4,82,36,34,4767,5,98,9,6,3,1,43,2,47,64,7,45,4,3,8,5,7,12,54,21,67,66,0})
     )
 );
-
-TEST(testVecMergeSort, alreadySorted) {
-    vector<int> input = {0, 1, 2, 3};
-    vector<int> out(input);
-    VectorSorter::mergesort(input, out);
-    VectorSorter::isSorted(input, out);
-}
-
-TEST(testVecMergeSort, inverseSorted) {
-    vector<int> input = {3, 2, 1, 0};
-    vector<int> out(input);
-    VectorSorter::mergesort(input, out);
-    VectorSorter::isSorted(input, out);
-}
-
-TEST(testVecMergeSort, rand5Sorted) {
-    vector<int> input = {4, 3, 2, 1, 0};
-    vector<int> out(input);
-    VectorSorter::mergesort(input, out);
-    VectorSorter::isSorted(input, out);
-}
-
-TEST(testVecMergeSort, rand7Sorted) {
-    vector<int> input = {6, 5, 4, 3, 2, 1, 0};
-    vector<int> out(input);
-    VectorSorter::mergesort(input, out);
-    VectorSorter::isSorted(input, out);
-}
