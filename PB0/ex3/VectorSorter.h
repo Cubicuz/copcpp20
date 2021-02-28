@@ -7,7 +7,7 @@ class VectorSorter
 {
 public:
     static void mergesort(std::vector<int> &in, std::vector<int> &out);
-    static void isSorted(std::vector<int> &in, std::vector<int> &out);
+    static bool isSorted(std::vector<int> &in, std::vector<int> &out);
 private:
     static void mergesort(std::vector<int> &from, std::vector<int> &to, int begin, int end);
 };

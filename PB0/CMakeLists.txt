@@ -21,6 +21,9 @@ ex3/VectorSorter.h
 testthetests.h
 )
 
-add_executable(Google_Test_run ${header_files} ${cpp_files})
-add_executable(PB0 ${header_files} ${cpp_files})
+set(test_files
+ex3/VectorSorterTest.cpp
+)
+
+add_executable(Google_Test_run ${header_files} ${cpp_files} ${test_files})
 target_link_libraries(Google_Test_run gtest gtest_main)
